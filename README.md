@@ -2,6 +2,14 @@
 
 Tech challenge for Amaris job interview.
 
+## Versions
+```bash
+$ node -v
+v23.1.0
+$ npm -v
+10.9.0
+```
+
 ## Important Paths
 - [Database config](src/config/orm.option.ts)
 - [PokeAPI Module](src/services/pokeapi)
