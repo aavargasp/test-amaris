@@ -45,7 +45,7 @@ curl -X PUT 'localhost:3000/pokemon' \
   "height": 4,
   "weight": 60,
   "type": "electric",
-  "id": "a3fcf74a-db52-419a-b230-f319de58733e"
+  "id": "1da5b432-00e7-4295-8470-798c0d04f245"
 }
 
 MariaDB [amaris]> select * from pokemon;
