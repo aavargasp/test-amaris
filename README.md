@@ -2,12 +2,6 @@
 
 Tech challenge for Amaris job interview.
 
-## Project setup
-
-```bash
-$ npm install
-```
-
 ## Important Paths
 - [Database config](src/config/orm.option.ts)
 - [PokeAPI Module](src/services/pokeapi)
@@ -15,7 +9,18 @@ $ npm install
 - [Dockerfile](Dockerfile)
 - [Docker-compose](docker-compose.yml)
 
-## Deployment
+## Run Locally
+
+```bash
+# docker deploys only database
+$ docker compose up -d database
+
+$ npm install
+
+$ npm run start:dev
+```
+
+## Run Dockerized
 
 ```bash
 # docker deploys a database and the backend
