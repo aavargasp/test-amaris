@@ -2,6 +2,15 @@
 
 Tech challenge for Amaris job interview.
 
+## Requirements
+
+RETO TECNICO Pokemon
+- Disponibilizar un servicio nestjs en local
+- Conectar a una base de datos (al gusto)
+- Crear un endpoint que permita crear un pokemon con 3 datos basicos + el id de pokemon
+- Consumir un servicio externo que triaga la informacion del pokemon y guardar 3 campos adicionales
+- Obtenga el nombre del pokemon desde el campo pokemon.name... suponga que aveces el nombre llega como string en el campo "pokemon" y prepare el codigo para que lo pueda obtener de las dos formas.
+
 ## Versions
 ```bash
 $ node -v
