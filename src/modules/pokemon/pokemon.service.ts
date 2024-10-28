@@ -1,9 +1,9 @@
-import { Inject, Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PokeapiService } from 'src/services/pokeapi/pokeapi.service';
 import { Repository } from 'typeorm';
 import { CreatePokemonDto } from './dto/create-pokemon.dto';
 import { Pokemon } from './entities/pokemon.entity';
-import { PokeapiService } from 'src/services/pokeapi/pokeapi.service';
 
 @Injectable()
 export class PokemonService {
@@ -18,13 +18,30 @@ export class PokemonService {
   ) {}
 
   async create(createPokemonDto: CreatePokemonDto): Promise<Pokemon> {
-    this.logger.debug('[create] trying to create pokemon', { createPokemonDto });
+    this.logger.debug('[create] trying to create pokemon', {
+      createPokemonDto,
+    });
 
-    const pokemonName = createPokemonDto.name;
-    const pokeApiData = await this.pokeApi.findOnePokemon(pokemonName)
-    const pokemon = await this.entityRepo.save(new Pokemon(pokemonName, pokeApiData.height, pokeApiData.weight));
+    const pokeApiData = await this.pokeApi.findOnePokemon(
+      createPokemonDto.name,
+    );
+
+    // Values from DTO
+    const pokemon = new Pokemon();
+    pokemon.color = createPokemonDto.color;
+    pokemon.usesPokeball = createPokemonDto.usesPokeball;
+
+    // Values from API
+    if (pokeApiData.name) pokemon.name = pokeApiData.name;
+    else pokemon.name = pokeApiData.pokemon;
+
+    pokemon.height = pokeApiData.height;
+    pokemon.weight = pokeApiData.weight;
+    pokemon.type = pokeApiData.types[0].type.name;
+
+    const dbPokemon = await this.entityRepo.save(pokemon);
 
     this.logger.debug('[create] pokemon created', { pokemon });
-    return pokemon;
+    return dbPokemon;
   }
 }

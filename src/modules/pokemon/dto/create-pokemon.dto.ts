@@ -1,7 +1,15 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsBoolean, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreatePokemonDto {
-  @IsString()
   @IsNotEmpty()
+  @IsString()
   name!: string;
+
+  @IsNotEmpty()
+  @IsString()
+  color!: string;
+
+  @IsNotEmpty()
+  @IsBoolean()
+  usesPokeball!: boolean;
 }

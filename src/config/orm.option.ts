@@ -3,7 +3,7 @@ import { Pokemon } from 'src/modules/pokemon/entities/pokemon.entity';
 
 const ormOptions: TypeOrmModuleOptions = {
   type: 'mariadb',
-  host: 'localhost',
+  host: 'database',
   port: 3306,
   username: 'root',
   password: 'amaris',

@@ -1,17 +1,9 @@
-export type PokeapiBaseResponse = {
-  name: string;
-  url?: string;
-};
-
-export type PokeapiResponse = PokeapiBaseResponse & {
+export type PokeapiResponse = {
   id: number;
+  name?: string;
+  pokemon?: string;
   height: number;
   weight: number;
-  moves: {
-    move: {
-      name: string;
-    };
-  }[];
   types: {
     type: {
       name: string;

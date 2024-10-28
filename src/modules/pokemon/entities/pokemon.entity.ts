@@ -9,14 +9,17 @@ export class Pokemon {
   name: string;
 
   @Column()
+  color: string;
+
+  @Column()
+  usesPokeball: boolean;
+
+  @Column()
   height: number;
 
   @Column()
   weight: number;
 
-  constructor(name: string, height: number, weight: number) {
-    this.name = name;
-    this.height = height;
-    this.weight = weight;
-  }
+  @Column()
+  type: string;
 }
